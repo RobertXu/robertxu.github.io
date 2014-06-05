@@ -9,19 +9,23 @@
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+.page-section {
+	color: white;
+}
+
 body {
   	background-color: #ffffff;
   	font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 14px;
-    color: #555;
+    color: #255;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h4, h5, h6 {
 	font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: #333;
@@ -83,15 +87,9 @@ a:after {
     padding: 0;
 }
 
-
 .navbar {
 	text-transform: uppercase;
 	margin-bottom: 0px;
-}
-
-.navbar-inverse {
-	padding-bottom: 70px;
-	padding-top: 70px;
 }
 
 .navbar-inverse {
@@ -147,11 +145,26 @@ a:after {
 	background-color: #f2f2f2;
 }
 
+#contact {
+	background-color:#ff4040 ;
+}
+
+#projects {
+	background-color:#3914af;
+
+}
+
+
+
+#resume {
+	background-color:#ff9e00;
+}
+
 
 #footer {
 	background-color: #2f2f2f;
-	padding-top: 50px;
-	padding-bottom: 50px; 
+	padding-top: 10px;
+	padding-bottom:10px; 
 }
 
 #footer p {
