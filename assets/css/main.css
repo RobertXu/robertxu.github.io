@@ -136,7 +136,6 @@ a:after {
 	padding-bottom: 50px;
 }
 
-
 /* +++++ WRAP SECTIONS +++++ */
 
 #ww {
@@ -153,8 +152,6 @@ a:after {
 	background-color:#3914af;
 
 }
-
-
 
 #resume {
 	background-color:#ff9e00;
@@ -190,33 +187,6 @@ a:after {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	background-color: #ffffff;
-}
-
-
-
-/* Blog Date*/
-bd {
-	font-size: 12px;
-	text-transform: uppercase;
-	color: #d2d2d2;
-	font-weight: 700;
-}
-
-/* Blog Author*/
-ba {
-	font-size: 12px;
-	text-transform: uppercase;
-}
-
-/* Blog Quote */
-.bq {
-	font-size: 22px;
-	padding-top: 30px;
-}
-
-/* Blog Tags */
-bt {
-	font-size: 12px;
 }
 
 /* ================== PORTFOLIO IMAGES HOVER EFFECT ================== */
