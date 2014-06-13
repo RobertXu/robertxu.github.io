@@ -133,7 +133,7 @@
 				          </div>
 
 		            <div class="modal-body"> 
-		            	<div class="col-lg-4"> 
+		            	<div class="col-lg-4 storage"> 
 		            		<p style="font-color:black">
 		            			<h5>Controls</h5>
 		            			 <span class="label" style="background-color: purple"> q: quit game </span> <br>
@@ -172,7 +172,7 @@
 		            </div>
 
 		            <div class="modal-footer">
-		              <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+		              <button id="closeTetris" type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 		            </div>
 
 		          </div>
@@ -334,21 +334,25 @@
 	<script>
 		$('#playTetris').on('click', function(){
 
-	    var canvas = document.getElementById('canvas');
-	    var ctx = canvas.getContext('2d')
-	    var showNextPiece = document.getElementById('preview');
-	    var preview = showNextPiece.getContext('2d');
-	    var storedPiece = document.getElementById('store');
-	    var store = storedPiece.getContext('2d');
-	    var scoreWindow = $('#scoreWindow');
-	    var game = new Tetris.Game(ctx, preview, store, scoreWindow);
-	    var key = window.key;
+		if (!window.game){
+			var canvas = document.getElementById('canvas');
+		    var ctx = canvas.getContext('2d')
+		    ctx.clearRect(0, 0, this.dimX, this.dimY);
+		    var showNextPiece = document.getElementById('preview');
+		    var preview = showNextPiece.getContext('2d');
+		    var storedPiece = document.getElementById('store');
+		    var store = storedPiece.getContext('2d');
+		    var scoreWindow = $('#scoreWindow');
+		    var game = new Tetris.Game(ctx, preview, store, scoreWindow);
+		    window.game = game;
+		    var key = window.key;
 
-	    ctx.fillStyle ='white';
-	    ctx.font = '20px Arial';
-	    ctx.fillText("Press t to begin", 55, 250);
+		    ctx.fillStyle ='white';
+		    ctx.font = '20px Arial';
+		    ctx.fillText("Press t to begin", 55, 250);
 
-	    key('t', game.start.bind(game));
+		    key('t', game.start.bind(game));
+		}   
     })
   </script>
   </body>

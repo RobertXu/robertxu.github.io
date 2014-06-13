@@ -10,8 +10,6 @@
     	this.dimY = root.canvas.height;	
     	this.storedWindow = storedWindow;
     	this.scoreDisplay = scoreDisplay;
-    	 	
-    	this.initVars();
 	}
 
 	Game.prototype.initVars = function(){
@@ -43,7 +41,6 @@
     Game.prototype.bindKeyHandlers = function()
 	  {
 	    that = this;
-	    key.unbind('r');
 	    key.unbind('t');
 	    // key('space', that.movePiece.bind(that, 'space');
     	key('q', that.endGame.bind(that));
@@ -115,6 +112,8 @@
 	//Start the game, initalize listeners
 	Game.prototype.start = function(){
 		that = this;
+		that.storedWindow.clearRect(0, 0, this.dimX, this.dimY);
+		that.initVars();
 		that.bindKeyHandlers();
 		that.interval = setInterval(that.step.bind(that), that.FPS)
 		that.drawPreview();
@@ -249,7 +248,7 @@
 		 this.unbindHandlers();
 		 this.gameOverMessage();	
 		 that = this;
-		 key('r', that.restart.bind(that));	 
+		 key('t', that.start.bind(that));	 
 	}
 
 	Game.prototype.gameOverMessage = function(){
@@ -259,7 +258,7 @@
   		 this.ctx.fillText("Game Over", 68, 200);
   		 this.ctx.fillStyle ='white';
   		 this.ctx.font = '20px Arial';
-  		 this.ctx.fillText("Press r to replay", 55, 250);
+  		 this.ctx.fillText("Press t to replay", 55, 250);
 	}
 
 	Game.prototype.fillBoard = function(){

@@ -12,3 +12,8 @@
  .modal-dialog > h5 {
  	text-align: center;
  }
+
+ .storage > span {
+ 	font-family: garamond;
+ 	font-size: 14px;
+ }
