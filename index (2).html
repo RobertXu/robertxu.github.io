@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Tetrisssssss</title>
+   <script src="./keymaster.js"></script>
+   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="./tetris.css">
+   <script type="application/javascript" src="./pieces.js"></script>
+   <script type"application/javascript" src="./game.js"></script>
+</head>
+
+<body>
+
+  <div id="game_container"> 
+    <div id="game_window" class="game_component">
+      <canvas height="500" width="250" style="background-color: black" id="canvas" ></canvas>
+    </div>
+
+    <div class="game_component" style="width:50px; height:50px"></div>
+
+    <div id="preview_window" class="game_component">
+       <canvas height="125" width="125" style="background-color: black" id="preview" ></canvas>
+    </div>
+
+    <div class="game_component" style="width:50px; height:50px"></div>
+
+    <div id="store_window" class="game_component" style="margin-left:50px; margin-top: 100px">
+       <canvas height="125" width="175" style="background-color: black" id="store" ></canvas>
+    </div>
+
+    <div id="scoreWindow" style="margin-left:50px; margin-top: 100px">
+      0 lines 
+    </div>
+  <div>
+  
+  
+  <script>
+  $(document).ready(function(){
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d')
+    var showNextPiece = document.getElementById('preview');
+    var preview = showNextPiece.getContext('2d');
+    var storedPiece = document.getElementById('store');
+    var store = storedPiece.getContext('2d');
+    var scoreWindow = $('#scoreWindow');
+    var game = new Tetris.Game(ctx, preview, store, scoreWindow);
+    game.start();
+
+    })
+  </script>
+</body>
+</html>

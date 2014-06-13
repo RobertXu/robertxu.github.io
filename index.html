@@ -12,10 +12,11 @@
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-
+<!--     <link href="assets/css/tetris.css" rel = "stylesheet"> -->
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/tetris.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
@@ -114,7 +115,73 @@
 			<div class="col-lg-6">
 				<h3> Tetris </h3>
 				<a class="zoom green" href="#"><img class="img-responsive" alt="" /></a>
+				<a id="playTetris" class="btn btn-primary" data-toggle="modal" data-target="#tetrisModal">Play Now</a>
 			</div>
+
+
+
+		      <div class="modal fade" id="tetrisModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		        <div class="modal-dialog">
+		          <div class="modal-content">
+		            
+		           
+
+		            <div class="row"> 
+		            	 <div class="modal-header" style="text-align:center">
+				              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				              <h4 class="modal-title" id="myModalLabel">Tetris!</h4>
+				          </div>
+
+		            <div class="modal-body"> 
+		            	<div class="col-lg-4"> 
+		            		<p style="font-color:black">
+		            			<h5>Controls</h5>
+		            			 <span class="label" style="background-color: purple"> q: quit game </span> <br>
+		            			 <span class="label label-info"> i: rotate piece </span> <br>
+		            			 <span class="label label-default"> j: move piece left </span> <br>
+		            			 <span class="label label-primary"> l: move piece right </span> <br>
+		            			 <span class="label label-success"> k: move piece down </span> <br>
+		            			 
+		            			 <span class="label label-warning"> d: instantly drop piece </span> <br>
+		            			 <span class="label label-danger"> s: swap piece with storage </span> <br>	 			            		
+		            		</p>
+		            		
+		            		<h5>Storage</h5>
+							 <div id="store_window" class="game_component">
+							       <canvas height="125" width="175" style="background-color: black" id="store" ></canvas>
+							</div>
+		            	</div>
+		            	<div class="col-lg-5"> 
+		            		 <div id="game_window" class="game_component">
+							      <canvas height="500" width="250" style="background-color: black" id="canvas" ></canvas>
+						    </div>
+		            	</div>
+
+		            	<div class="col-lg-3"> 
+		            		<div class="row">  
+		            			<h5>Next Piece</h5>
+		            			 <div id="preview_window" class="game_component">
+								       <canvas height="125" width="125" style="background-color: black" id="preview" ></canvas>
+								    </div>
+								   <div style="height:100px; width:100px"> </div>
+								  <span id="scoreWindow" class="label label-lg label-success" style="font-size: 20px">0 Lines</span>
+		            		</div>
+
+		            	</div>  
+		            </div>
+		            </div>
+
+		            <div class="modal-footer">
+		              <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+		            </div>
+
+		          </div>
+		        </div>
+		      </div>
+
+
+
+
 			<div class="col-lg-6">
 				<br>
 				<br>
@@ -247,6 +314,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/keymaster.js"></script>
+    <script src='assets/js/pieces.js'></script>
+    <script src="assets/js/game.js"></script>
+
     <script src="assets/js/jquery.nav.js"></script>
     <script type="text/javascript">
 		$('.navbar').onePageNav({
@@ -260,5 +331,25 @@
 	         scrollSpeed: 1200
 	         });
 	</script>
+	<script>
+		$('#playTetris').on('click', function(){
+
+	    var canvas = document.getElementById('canvas');
+	    var ctx = canvas.getContext('2d')
+	    var showNextPiece = document.getElementById('preview');
+	    var preview = showNextPiece.getContext('2d');
+	    var storedPiece = document.getElementById('store');
+	    var store = storedPiece.getContext('2d');
+	    var scoreWindow = $('#scoreWindow');
+	    var game = new Tetris.Game(ctx, preview, store, scoreWindow);
+	    var key = window.key;
+
+	    ctx.fillStyle ='white';
+	    ctx.font = '20px Arial';
+	    ctx.fillText("Press t to begin", 55, 250);
+
+	    key('t', game.start.bind(game));
+    })
+  </script>
   </body>
 </html>

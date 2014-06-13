@@ -1,0 +1,14 @@
+  #game_container {
+     width: 500px;
+     height:600px;
+     margin: 0px auto;
+     padding-top: 100px;
+   }
+
+ .modal-dialog {
+ 	width: 800px;
+ }
+
+ .modal-dialog > h5 {
+ 	text-align: center;
+ }
