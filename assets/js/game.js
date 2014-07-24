@@ -205,9 +205,14 @@
 	}
 
 	Game.prototype.removeRow = function(row){
-		for (var i = row; i > 0; i--){
+		for (var i = row; i >= 0; i--){
 			for (var j = 0; j < 10; j++){
-				this.board[i][j] = this.board[i-1][j];
+				//If we're at the top row, there's no row above to shift the squares down from
+				if (i === 0){
+					this.board[i][j] = null;
+				} else {
+					this.board[i][j] = this.board[i-1][j];
+				}		
 			}
 		}
 	}

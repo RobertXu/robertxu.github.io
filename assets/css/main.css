@@ -13,6 +13,14 @@
 	color: white;
 }
 
+.panel-body {
+    color: black;
+}
+
+#wordModal > .modal-dialog {
+    width: 90%;
+}
+
 body {
   	background-color: #ffffff;
   	font-family: 'Montserrat', sans-serif;

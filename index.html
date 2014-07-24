@@ -100,16 +100,147 @@
 		</div><!-- /row -->
 		<div class="row mt"> 
 			<div class="col-lg-6">
-				<h3> Snake </h3>
-				<a class="zoom green" href="#"><img class="img-responsive"  alt="" /></a>
+				<br>
+				<br>
+				<br>
+				<br>
+				<p>Microsoft Word Count re-imagined. Paste a passage of text to view metrics on word length distribution and Ngram structure.</p>
 			</div>
+			
 			<div class="col-lg-6">
-				<br>
-				<br>
-				<br>
-				<br>
-				<p>Re-imagination of the phone game classic.</p>
+				<h3> Text Analyzer </h3>
+				<a class="zoom green" href="#"><img class="img-responsive"  alt="" /></a>
+				<a id="startCounter" class="btn btn-primary" data-toggle="modal" data-target="#wordModal">View Now</a>
 			</div>
+
+			 <div class="modal fade" id="wordModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		        <div class="modal-dialog">
+		          <div class="modal-content">
+		            
+		            <div class="row"> 
+		            	 <div class="modal-header" style="text-align:center">
+				              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				              <h4 class="modal-title" id="modalLabel">Word Counter!</h4>
+				          </div>
+
+			            <div class="modal-body"> 
+			            	
+			            	<div class="row">
+										<div style="text-align:center" class="col-xs-6 col-xs-offset-3"> 
+									<small>Enter some text to get started!</small>
+								 </div>
+							</div>
+							
+							<!--+++++ Main Content +++++-->
+							<div class="container">
+								<!--+++++ Text Area and Chart +++++-->
+								<div class="col-xs-6 col-xs-offset-1">
+									<!--+++++ Text Area Form +++++-->
+									<div class="row">
+										<form role="form">
+										  <div class="img-rounded form-group" id="textInputArea">
+											  	<label style="display:block"> <h4 style="text-align:center">Enter Text to be Analyzed</h4>
+											  		<textarea style="width:100%; height:200px" id="enteredText">  </textarea>
+											  	</label>
+										  </div>
+										 
+										 <button type="button" id="clearText" class="btn btn-default">Clear Text</button>
+										  <button type="button" id="parseText" style="float:right" class="btn btn-default">Parse Text</button>
+										</form>
+									</div>
+									<!--+++++ Word Distribution Chart +++++-->
+									<div class="row" id="wordChartContainer" style="height:300px; width:570px">
+										<h4 style="text-align:center">Frequency vs Word Length</h4>
+											<canvas id="myChart" style="height:85%; width:100%"></canvas>
+									</div>
+								</div>
+
+								<!--+++++ Summary Statistics +++++-->
+								<div class="col-xs-4 col-xs-offset-1">
+									<!--+++++ Core Statistics +++++-->
+									<div class="row">
+										<div class="panel panel-warning">
+											<div class="panel-heading">
+												<div class="panel-title">Statistics</div>
+											</div>
+											
+											<div class="panel-body">
+											    <div class="list-group" id="statsBody">
+													<li id="paragraphsCount" class="list-group-item">
+														Paragraphs
+													    <span class="badge"></span>
+												    </li>
+
+												    <li id="sentencesCount" class="list-group-item">
+												    	Sentences
+													    <span class="badge"></span>
+												    </li>
+
+												    <li id="wordsCount" class="list-group-item">
+													    Words
+													    <span class="badge"></span>
+												    </li>
+
+											    	<div id="bigramsCount" class="panel panel-default">
+											    		<div class="panel-heading">
+											    			Most Popular Bigram
+											    			 <span style="float:right" class="badge"></span>				    
+											    		</div>
+
+													    <div class="panel-body">
+														    <span style="float:left" class="badge"></span>	
+													    </div>
+													</div>		  
+												</div>
+									 	    </div>
+										</div>
+									</div>
+									<!--+++++ Custom Ngram Length +++++-->
+									<div class="row">
+										<div class="panel panel-success">
+											<div class="panel-heading">
+												<div class="panel-title">Custom Ngram Length</div>
+											</div>
+											<div class="panel-body">
+												<form class="form-horizontal" role="form">
+												  <div class="form-group" id="nGramLength">
+													  	<div class="col-xs-8">
+													  		<input type="text" class="form-control" id="nGramInput" placeholder="Enter Ngram Length">
+													  	</div>
+													  	<div class="col-xs-4">
+													  		<button type="button" id="nGramButton" class="btn btn-default">Submit</button>
+													  	</div>
+												  </div>
+												 
+												  </form>
+
+												  <div id="nGramsCount" class="panel panel-info">
+										    		<div class="panel-heading">
+										    			Most Popular Ngram
+										    			 <span style="float:right" class="badge"></span>				    
+										    		</div>
+
+												    <div class="panel-body">
+													    
+												    </div>
+												</div>		
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+			            	
+			            </div>
+		            </div>
+
+		            <div class="modal-footer">
+		              <button id="closeCounter" type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+		            </div>
+
+		          </div>
+		        </div>
+		      </div>
 		</div>
 			<div class="row mt"> 
 			<div class="col-lg-6">
@@ -178,8 +309,6 @@
 		          </div>
 		        </div>
 		      </div>
-
-
 
 
 			<div class="col-lg-6">
@@ -317,6 +446,8 @@
     <script src="assets/js/keymaster.js"></script>
     <script src='assets/js/pieces.js'></script>
     <script src="assets/js/game.js"></script>
+    <script src="assets/js/Chart.js"></script>
+    <script type"application/javascript" src="assets/js/wordCount.js"></script>
 
     <script src="assets/js/jquery.nav.js"></script>
     <script type="text/javascript">
@@ -331,6 +462,18 @@
 	         scrollSpeed: 1200
 	         });
 	</script>
+
+	<script>	
+
+	$('#startCounter').on('click', function(){
+		if(!window.wordCounter){
+			window.wordCounter = new wordCount.Counter();
+    		wordCounter.initializeListeners();
+		}	
+	})
+
+	</script>
+
 	<script>
 		$('#playTetris').on('click', function(){
 
